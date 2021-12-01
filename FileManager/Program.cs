@@ -229,12 +229,12 @@ namespace FileManager {
             base.Input(cmdKey);
             switch (cmdKey.Key) {
                 case ConsoleKey.Enter: return "cd '" + GetCurrentFile() + "'";
-                case ConsoleKey.F3: return "tp '" + GetCurrentFile() + "'";
+                case ConsoleKey.F3: if (RootFolder || (Cursor > 0)) return "tp '" + GetCurrentFile() + "'"; break;
                 case ConsoleKey.F4: return "chdrv";
-                case ConsoleKey.F5: return "cp '" + GetCurrentFile() + "' '" + OtherPanel.currFolder + "'";
-                case ConsoleKey.F6: return "mv '" + GetCurrentFile() + "' '" + OtherPanel.currFolder + "'";
+                case ConsoleKey.F5: if (RootFolder || (Cursor > 0)) return "cp '" + GetCurrentFile() + "' '" + OtherPanel.currFolder + "'"; break;
+                case ConsoleKey.F6: if (RootFolder || (Cursor > 0)) return "mv '" + GetCurrentFile() + "' '" + OtherPanel.currFolder + "'"; break;
                 case ConsoleKey.F7: return "md";
-                case ConsoleKey.F8: return "rm '" + GetCurrentFile() + "'";
+                case ConsoleKey.F8: if (RootFolder || (Cursor > 0)) return "rm '" + GetCurrentFile() + "'"; break;
             }
             return null;
         }
